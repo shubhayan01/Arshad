@@ -853,7 +853,8 @@
   .lawyer-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;margin-top:56px;}
   .lawyer-image-wrap{border-radius:var(--radius);overflow:hidden;aspect-ratio:3/4;background:linear-gradient(160deg,var(--purple-mid) 0%,var(--purple-pale) 100%);position:relative;box-shadow:0 24px 60px -20px rgba(124,58,237,0.25);transition:box-shadow 0.6s,transform 0.6s var(--ease-out);}
   .lawyer-image-wrap:hover{box-shadow:0 32px 80px -20px rgba(124,58,237,0.35);transform:translateY(-4px);}
-  .lawyer-image-wrap img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform 0.9s var(--ease-out);}
+  /* FIX: logo.png — contained and centred, no stretching or pixellation */
+  .lawyer-image-wrap img{width:100%;height:100%;object-fit:contain;object-position:center center;display:block;padding:32px;transition:transform 0.9s var(--ease-out);}
   .lawyer-image-wrap:hover img{transform:scale(1.05);}
   .lawyer-badge{position:absolute;bottom:20px;left:20px;right:20px;background:rgba(255,255,255,0.96);backdrop-filter:blur(10px);border-radius:var(--radius-sm);padding:14px 18px;display:flex;align-items:center;gap:12px;box-shadow:0 8px 24px rgba(0,0,0,0.1);transition:transform 0.5s var(--ease-out);}
   .lawyer-image-wrap:hover .lawyer-badge{transform:translateY(-3px);}
@@ -877,6 +878,8 @@
   .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px;}
   .team-card{border-radius:var(--radius);overflow:hidden;background:var(--bg);border:1px solid var(--gray-border);transition:transform 0.5s var(--ease-out),box-shadow 0.5s var(--ease-out),border-color 0.4s;}
   .team-card:hover{transform:translateY(-8px);box-shadow:0 24px 56px rgba(0,0,0,0.12);border-color:var(--purple-mid);}
+  /* Clickable team cards */
+  .team-card-link{display:block;text-decoration:none;color:inherit;}
   .team-img{aspect-ratio:1;overflow:hidden;background:linear-gradient(160deg,var(--purple-pale),var(--purple-mid));position:relative;display:flex;align-items:center;justify-content:center;}
   .team-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(124,58,237,0.15) 100%);opacity:0;transition:opacity 0.5s;pointer-events:none;}
   .team-card:hover .team-img::after{opacity:1;}
@@ -1511,18 +1514,21 @@
       <h2 class="section-title reveal delay-1">Dedicated professionals helping you succeed</h2>
     </div>
     <div class="team-grid">
+      <!-- Arshad card — no external link -->
       <div class="team-card reveal delay-1">
         <div class="team-img"><img src="./006A3388.jpeg" alt="Arshad — Licensed Mortgage Agent" loading="lazy"></div>
         <div class="team-info"><h4>Arshad</h4><span>Licensed Mortgage Agent</span></div>
       </div>
-      <div class="team-card reveal delay-2">
-        <div class="team-img"><img src="./logo.png" alt="Real Estate Lawyer" loading="lazy"></div>
+      <!-- Law firm card — links to vireolaw.ca -->
+      <a href="https://vireolaw.ca/" target="_blank" rel="noopener noreferrer" class="team-card team-card-link reveal delay-2">
+        <div class="team-img"><img src="./logo.png" alt="Real Estate Lawyer" loading="lazy" style="object-fit:contain;padding:24px;"></div>
         <div class="team-info"><h4>Your Legal Partner</h4><span>Real Estate Lawyer</span></div>
-      </div>
-      <div class="team-card reveal delay-3">
+      </a>
+      <!-- Accounting firm card — links to rumitax.com -->
+      <a href="https://www.rumitax.com" target="_blank" rel="noopener noreferrer" class="team-card team-card-link reveal delay-3">
         <div class="team-img"><img src="./WhatsApp Image 2026-05-21 at 9.17.32 AM.jpeg" alt="Client Support Advisor" loading="lazy"></div>
         <div class="team-info"><h4>Accounting Firm</h4><span>Mortgage Accounting</span></div>
-      </div>
+      </a>
     </div>
   </div>
 </section>
